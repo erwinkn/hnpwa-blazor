@@ -1,0 +1,56 @@
+@using System.Text.RegularExpressions
+@if(Story != null)
+{
+<div class="flex items-center">
+    @if(Number != null)
+    {
+        <div class="text-3xl text-gray-600 mr-8">
+            @Number
+        </div>
+    }
+    <div class="">
+        <div>
+            <a class="text-lg" href="@Story.Url">
+                @Story.Title
+            </a>
+            @if(!String.IsNullOrWhiteSpace(Story.Domain)){
+                <span> (@Story.Domain)</span>
+            }
+        </div>
+        @if(Story.Type == "job")
+        {
+            <div class="text-gray-600 font-medium">
+                @Story.TimeAgo
+            </div>
+        }
+        else
+        {
+            <div class="text-gray-600 font-medium">
+                @Story.Points points by
+                <a href="user/@Story.User" class="text-indigo-700 hover:underline">@Story.User</a>
+                @Story.TimeAgo |
+                <a href="item/@Story.Id" class="text-indigo-700 hover:underline">
+                    @Story.CommentsCount comments
+                </a>
+            </div>
+        }
+        
+    </div>
+</div>
+}
+
+@code {
+    [Parameter]
+    public IStory Story { get; set; }
+    [Parameter]
+    public int? Number { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        string pattern = "^item\\?id=[0-9]*";
+        if(Regex.IsMatch(Story.Url, pattern))
+        {
+            Story.Url = Regex.Replace(Story.Url, "\\?id=", "/");
+        }
+    }
+}

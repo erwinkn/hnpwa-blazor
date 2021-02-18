@@ -1,0 +1,23 @@
+<div class="mt-4">
+    <span class="text-indigo-700 hover:underline">
+        @Item.User
+    </span>
+    <span>
+        @Item.TimeAgo
+    </span>
+    <a class="cursor-pointer" @onclick="Toggle">
+        [@toggleIndicator]
+    </a>
+</div>
+@if(show)
+{
+    <div class="max-w-prose comment mt-3">
+        @((MarkupString)Item.Content)
+    </div>
+    <div class="ml-8">
+        @foreach(IComment kid in Item.Comments)
+        {
+            <Comment Item="@kid" />
+        }
+    </div>
+}

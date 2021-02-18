@@ -1,0 +1,5 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/Fluxor.Blazor.Web" Path="/home/erwin/.nuget/packages/fluxor.blazor.web/4.0.0/build/../staticwebassets/" />
+  <ContentRoot BasePath="/" Path="/home/erwin/Documents/Code/Hnpwa/Client/bin/Debug/net5.0/wwwroot/" />
+  <ContentRoot BasePath="/" Path="/home/erwin/Documents/Code/Hnpwa/Client/obj/Debug/net5.0/scopedcss/bundle/" />
+</StaticWebAssets>

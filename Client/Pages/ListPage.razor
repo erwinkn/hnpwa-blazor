@@ -1,0 +1,30 @@
+@page "/"
+@page "/{Category}"
+@page "/{Category}/{Page:int}"
+
+
+@if(Stories != null)
+{
+    <!-- Eventual redirections have already happened so we're good-->
+    <div class="mx-auto">
+        <a href="/@Category/@(Page-1)" class=@prevStyling>
+            Prev
+        </a>
+        <span class="px-4">
+            @(Page ?? 1) / 10
+        </span>
+        <a href="/@Category/@(Page+1)" class=@nextStyling>
+            Next
+        </a>
+    </div>
+    int counter = 1 + 30 * ((int)Page! - 1);
+    <ul class="list-disc">
+        @foreach(IStory story in Stories)
+        {
+            <div class="flex mt-8">
+                <StoryTitle Story="@story" Number="@counter" />
+            </div>
+            counter++;
+        }
+    </ul>
+}
