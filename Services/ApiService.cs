@@ -12,22 +12,18 @@ namespace HnpwaBlazor.Services
     // Unofficial: https://github.com/cheeaun/node-hnapi
     public class ApiService
     {
-        private HttpClient OfficialHttpClient { get; }
-        private HttpClient UnofficialHttpClient { get; }
+        private HttpClient HttpClient { get; }
 
         public ApiService()
         {
-            // For users
-            OfficialHttpClient = new HttpClient { BaseAddress = new Uri("https://hacker-news.firebaseio.com/v0/") };
-            // For everything else
-            UnofficialHttpClient = new HttpClient { BaseAddress = new Uri("https://api.hackerwebapp.com/") };
+            HttpClient = new HttpClient { BaseAddress = new Uri("https://api.hackerwebapp.com/") };
         }
 
         public async Task<IEnumerable<Item>> GetList(string category, int pageNb=1)
         {
             if(pageNb > 10)
                 throw new ArgumentOutOfRangeException("Can only go up to page 10");
-            var items = await UnofficialHttpClient.GetFromJsonAsync<List<Item>>(category + "?page=" + pageNb);
+            var items = await HttpClient.GetFromJsonAsync<List<Item>>(category + "?page=" + pageNb);
             if(items == null)
                 throw new NullReferenceException("Could not read stories from API response");
             return items;
@@ -35,7 +31,7 @@ namespace HnpwaBlazor.Services
 
         public async Task<Item> GetItem(int id)
         {
-            var item = await UnofficialHttpClient.GetFromJsonAsync<Item>("item/" + id);
+            var item = await HttpClient.GetFromJsonAsync<Item>("item/" + id);
             if(item == null)
                 throw new NullReferenceException("Could not read item from API response");
             return item;
@@ -46,7 +42,7 @@ namespace HnpwaBlazor.Services
             List<IPollOption> options = new List<IPollOption>();
             for(int i = 1; i < nbOptions; i++)
             {
-                var opt = await UnofficialHttpClient.GetFromJsonAsync<Item>($"item/{pollId + i}");
+                var opt = await HttpClient.GetFromJsonAsync<Item>($"item/{pollId + i}");
                 if(opt == null)
                     throw new NullReferenceException("Could not read poll option from API response");
                 options.Add(opt);
