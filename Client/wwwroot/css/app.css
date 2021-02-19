@@ -7,6 +7,28 @@
         @apply underline;
     }
     .comment p {
-        @apply mt-3;
+        @apply mt-1.5;
+    }
+}
+
+@layer utilities {
+    .general-padding {
+        @apply px-4 sm:px-8 md:px-12;
+    }
+    .main-width {
+        @apply mx-auto w-full md:w-10/12 lg:w-8/12 xl:w-7/12;
+    }
+    .metadata {
+        @apply text-gray-600 text-opacity-90;
+    }
+    /* Feather icons */
+    .feather {
+        width: 24px;
+        height: 24px;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
     }
 }

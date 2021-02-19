@@ -1,0 +1,32 @@
+<div class="bg-white text-teal-900 main-width general-padding py-2 lg:py-4 rounded-b shadow flex justify-center">
+    <div class="w-14">
+        @if(Page > 1)
+        {
+            <a class="block" href="/@Category/@(Page-1)">
+                <img class="inline h-4" src="icons/chevron-left.svg" />
+                prev
+            </a>
+        }
+    </div>
+    <div class="mx-4 text-center w-12 lg:w-14">
+        @Page / @MaxPage
+    </div>
+    <div class="w-14">
+        @if(Page < MaxPage)
+        {
+            <a href="/@Category/@(Page+1)">
+                next
+                <img class="inline h-4" src="icons/chevron-right.svg" />
+            </a>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Page { get; set; }
+    [Parameter]
+    public int MaxPage { get; set; }
+    [Parameter]
+    public string Category { get; set; } = "news";
+}

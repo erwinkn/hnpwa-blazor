@@ -5,26 +5,23 @@
 
 @if(Stories != null)
 {
-    <!-- Eventual redirections have already happened so we're good-->
-    <div class="mx-auto">
-        <a href="/@Category/@(Page-1)" class=@prevStyling>
-            Prev
-        </a>
-        <span class="px-4">
-            @(Page ?? 1) / 10
-        </span>
-        <a href="/@Category/@(Page+1)" class=@nextStyling>
-            Next
-        </a>
+    <!-- First navigation control -->
+    <!-- Eventual redirections have already happened so we're good -->
+    <div class="rounded-b">
+        <PageControls Page="@(Page ?? 1)" MaxPage=@maxPage Category=@Category />
     </div>
-    int counter = 1 + 30 * ((int)Page! - 1);
-    <ul class="list-disc">
+    <!-- Stories list -->
+    <div class="bg-white main-width rounded shadow my-3 sm:my-4 ">
         @foreach(IStory story in Stories)
         {
-            <div class="flex mt-8">
-                <StoryTitle Story="@story" Number="@counter" />
+            <!-- Padding here due to borders -->
+            <div class="general-padding py-4 border-t-2 border-gray-100">
+                <StoryHeader Story="@story" />
             </div>
-            counter++;
         }
-    </ul>
+    </div>
+    <!-- Second navigation control -->
+    <div class="rounded-t">
+        <PageControls Page="@(Page ?? 1)" MaxPage=@maxPage Category=@Category />
+    </div>
 }

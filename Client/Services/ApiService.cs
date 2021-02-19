@@ -44,7 +44,7 @@ namespace Hnpwa.Client.Services
         public async Task<IEnumerable<IPollOption>> GetPollOptions(int pollId, int nbOptions)
         {
             List<IPollOption> options = new List<IPollOption>();
-            for(int i = 1; i <= nbOptions; i++)
+            for(int i = 1; i < nbOptions; i++)
             {
                 var opt = await UnofficialHttpClient.GetFromJsonAsync<Item>($"item/{pollId + i}");
                 if(opt == null)

@@ -1,12 +1,17 @@
-﻿<div class="flex py-4 px-8 border-b-2 border-indigo-600">
-    <div>
-        <img class="h-10" src="imgs/blazor-logo.png" />
+﻿<div class="main-width general-padding flex justify-between items-center py-4 text-yellow-100">
+    <div class="flex items-center">
+        <a href="/news/1" class="text-2xl font-serif font-extrabold border-yellow-100 border-2 px-2">
+            Y
+        </a>
+        <nav class="ml-6 sm:ml-8 lg:ml-12 space-x-4 sm:space-x-6 ">
+            <NavLink href="news" ActiveClass="font-semibold" >Top</NavLink>
+            <NavLink href="newest" ActiveClass="font-semibold">Newest</NavLink>
+            <NavLink href="ask" ActiveClass="font-semibold">Ask</NavLink>
+            <NavLink href="show" ActiveClass="font-semibold">Show</NavLink>
+            <NavLink href="jobs" ActiveClass="font-semibold">Jobs</NavLink>
+        </nav>
     </div>
-    <nav class="ml-10 space-x-4 flex justify-between items-center">
-        <NavLink href="news" class="block">News</NavLink>
-        <NavLink href="newest" class="block">Newest</NavLink>
-        <NavLink href="show" class="block">Show</NavLink>
-        <NavLink href="ask" class="block">Ask</NavLink>
-        <NavLink href="jobs" class="block">Jobs</NavLink>
-    </nav>
+    <a href="https://github.com/erwinkn/hnpwa-blazor">
+        <img src="icons/github.svg" alt="GitHub logo" />
+    </a>
 </div>

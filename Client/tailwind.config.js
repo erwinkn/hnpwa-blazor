@@ -1,3 +1,6 @@
+const { orange } = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: {
     content: [".Pages/**/*.razor", "./Shared/**/*.razor"],
@@ -7,7 +10,13 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        teal: colors.teal,
+        cyan: colors.cyan,
+        orange: orange,
+      },
+    },
   },
   variants: {
     extend: {},

@@ -1,5 +1,5 @@
-<div class="mt-4">
-    <span class="text-indigo-700 hover:underline">
+<div class="metadata mt-4">
+    <span class="text-teal-800 font-semibold hover:underline">
         @Item.User
     </span>
     <span>
@@ -11,10 +11,10 @@
 </div>
 @if(show)
 {
-    <div class="max-w-prose comment mt-3">
+    <div class="comment max-w-prose text-gray-800">
         @((MarkupString)Item.Content)
     </div>
-    <div class="ml-8">
+    <div class="ml-4 sm:ml-6">
         @foreach(IComment kid in Item.Comments)
         {
             <Comment Item="@kid" />

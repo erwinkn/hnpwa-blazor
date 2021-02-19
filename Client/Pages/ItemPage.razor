@@ -2,30 +2,36 @@
 
 @if(Item != null)
 {
-    <div class="border-indigo-600 border-b-2 pb-4">
-        <StoryTitle Story="@Item"/>
+    <div class="bg-white general-padding py-4 main-width rounded-b shadow mb-3 sm:mb-4 md:mb-6">
+        <StoryHeader Story="@Item" IsMainHeader="true"/>
         @if(!String.IsNullOrWhiteSpace(Item.Content))
         {
-            <div class="max-w-prose">
+            <div class="max-w-prose comment">
                 @((MarkupString)Item.Content)
             </div>
         }
         <!-- Empty list for non-polls -->
         @if(PollOptions != null)
         {
-            <ul>
+            <ul class="mt-3 lg:mt-4">
             @foreach(IPollOption option in PollOptions)
             {
-                <li>
-                    @((MarkupString)option.Content)
-                    @option.Points points
+                <li class="mt-2 flex justify-between">
+                    <div class="font-medium text-gray-600">
+                        @((MarkupString)option.Content)
+                    </div>
+                    <div class="metadata">
+                        @option.Points votes
+                    </div>
                 </li>
+                <div class="h-1 bg-teal-600 rounded"
+                        style="width: @((float)option.Points! / (float)maxPollScore * 100)%">
+                </div>
             }
             </ul>
         }
-        
     </div>
-    <div class="mt-8">
+    <div class="bg-white general-padding main-width py-4 shadow rounded-t">
         @foreach(IComment kid in Item.Comments)
         {
             <Comment Item="@kid" />

@@ -1,0 +1,14 @@
+.vscode
+
+Client/bin
+Client/obj
+Client/node_modules
+
+Server/bin
+Server/obj
+Server/appsettings.Development.json
+
+Shared/bin
+Shared/obj
+
+Notes.md

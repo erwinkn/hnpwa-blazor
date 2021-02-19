@@ -22,9 +22,6 @@ namespace Hnpwa.Client.Pages
         int maxPage = 10;
         IEnumerable<IStory> Stories { get; set; }
 
-        string prevStyling => Page == 1 ? "hidden" : "text-gray-800";
-        string nextStyling => Page == maxPage ? "hidden" : "text-gray-800";
-
         protected override async Task OnParametersSetAsync()
         {
             // Get first page by default

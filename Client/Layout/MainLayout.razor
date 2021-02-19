@@ -1,9 +1,11 @@
 @inherits LayoutComponentBase
 
-<div class="flex flex-col text-gray-800">
-    <NavMenu />
+<div class="text-gray-800 bg-gray-100 text-sm lg:text-base">
+    <div class="bg-teal-900">
+        <NavMenu />
+    </div>
 
-    <div class="container mx-auto mt-8 px-4 content">
+    <div class="mx-auto">
         @Body
     </div>
 </div>

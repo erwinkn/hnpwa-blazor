@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Linq;
 using System.Threading.Tasks;
 using Hnpwa.Client.Services;
 using Hnpwa.Shared;
@@ -17,12 +18,16 @@ namespace Hnpwa.Client.Pages
 
         Item? Item { get; set; }
         IEnumerable<IPollOption> PollOptions { get; set; } = new List<IPollOption>();
+        int maxPollScore;
 
         protected override async Task OnParametersSetAsync()
         {
             Item = await ApiService.GetItem(Id);
             if(Item.Poll.Count > 0)
+            {
                 PollOptions = await ApiService.GetPollOptions(Item.Id, Item.Poll.Count);
+                maxPollScore = PollOptions.Max(pollopt => pollopt.Points) ?? 0;
+            }
         }
     }
 }
