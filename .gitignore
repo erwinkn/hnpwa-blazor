@@ -3,5 +3,6 @@
 bin
 obj
 node_modules
+wwwroot/css/app.min.css
 
 Notes.md

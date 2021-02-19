@@ -2,7 +2,7 @@
     <div class="w-14">
         @if(Page > 1)
         {
-            <a class="block" href="/@Category/@(Page-1)">
+            <a class="block" href="@Category/@(Page-1)">
                 <img class="inline h-4" src="icons/chevron-left.svg" />
                 prev
             </a>
@@ -14,7 +14,7 @@
     <div class="w-14">
         @if(Page < MaxPage)
         {
-            <a href="/@Category/@(Page+1)">
+            <a href="@Category/@(Page+1)">
                 next
                 <img class="inline h-4" src="icons/chevron-right.svg" />
             </a>
