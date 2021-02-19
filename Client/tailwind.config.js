@@ -1,9 +1,8 @@
-const { orange } = require('tailwindcss/colors')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: {
-    content: [".Pages/**/*.razor", "./Shared/**/*.razor"],
+    content: ["./**/*.html", "./**/*.razor"],
     options: {
       keyframes: true,
     },
@@ -13,8 +12,6 @@ module.exports = {
     extend: {
       colors: {
         teal: colors.teal,
-        cyan: colors.cyan,
-        orange: orange,
       },
     },
   },

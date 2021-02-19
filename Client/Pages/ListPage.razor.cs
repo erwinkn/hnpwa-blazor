@@ -20,23 +20,19 @@ namespace Hnpwa.Client.Pages
         public int? Page { get; set; }
 
         int maxPage = 10;
-        IEnumerable<IStory> Stories { get; set; }
+        IEnumerable<IStory>? Stories { get; set; }
 
         protected override async Task OnParametersSetAsync()
         {
-            // Get first page by default
-            Page = Page ?? 1;
-            // Get news by default
-            Category = Category ?? "news";
-            // Redirect to news for incorrect categories
+            // Get news by default or redirect to it for incorrect categories
             string[] categories = { "news", "newest", "ask", "show", "jobs" };
-            // TODO: check if the relative URL works here
-            if(!categories.Contains(Category))
+            if(Category == null || !categories.Contains(Category))
                 NavigationManager.NavigateTo("news/1");
             else
             {
-                if(Category == "jobs")
-                    maxPage = 2;
+                // Get first page if not specified
+                Page = Page ?? 1;
+                maxPage = Category == "news" || Category == "newest" ? 10 : Category == "ask" ? 3 : 2;
                 if(Page < 1)
                     NavigationManager.NavigateTo(Category + "/1");
                 if(Page > maxPage)

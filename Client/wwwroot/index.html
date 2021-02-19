@@ -10,14 +10,20 @@
     <!-- <link href="Hnpwa.Client.styles.css" rel="stylesheet" /> -->
 </head>
 
-<body>
-    <div id="app">Loading...</div>
+<body class="bg-gray-100">
+    <!-- Loading animation from https://loading.io/css/ -->
+    <div id="app">
+        <!-- This div centers the elements -->
+        <div class="flex h-screen justify-center items-center">
+            <!-- This div is a container for the animation -->
+            <div class="flex items-center loading-bars h-16 md:h-24 lg:h-28 space-x-3 md:space-x-4 lg:space-x-5">
+                <div class="w-6 md:w-8 bg-teal-900 rounded-sm"></div>
+                <div class="w-6 md:w-8 bg-teal-900 rounded-sm"></div>
+                <div class="w-6 md:w-8 bg-teal-900 rounded-sm"></div>
+            </div>
+        </div>
+    </div>
 
-    <!-- <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div> -->
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 

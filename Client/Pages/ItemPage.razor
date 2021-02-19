@@ -1,6 +1,18 @@
 @page "/item/{Id:int}"
 
-@if(Item != null)
+@if(Item == null)
+{
+    <!-- This div centers the elements -->
+    <div class="flex h-full justify-center items-center">
+        <!-- This div is a container for the animation -->
+        <div class="flex items-center loading-bars h-16 md:h-24 lg:h-28 space-x-3 md:space-x-4 lg:space-x-5">
+            <div class="w-6 md:w-8 bg-teal-900 rounded-sm"></div>
+            <div class="w-6 md:w-8 bg-teal-900 rounded-sm"></div>
+            <div class="w-6 md:w-8 bg-teal-900 rounded-sm"></div>
+        </div>
+    </div>
+}
+else
 {
     <div class="bg-white general-padding py-4 main-width rounded-b shadow mb-3 sm:mb-4 md:mb-6">
         <StoryHeader Story="@Item" IsMainHeader="true"/>

@@ -1,13 +1,13 @@
 @using System.Text.RegularExpressions
 @if(Story != null)
 {
-    <div class="text-sm metadata">
+    <div class="text-sm lg:text-base metadata">
         <div>
             <a class=@titleStyles href="@Story.Url">
                 @Story.Title
             </a>
             @if(!String.IsNullOrWhiteSpace(Story.Domain)){
-                <span class=""> (@Story.Domain)</span>
+                <span class="pl-1"> (@Story.Domain)</span>
             }
         </div>
         @if(Story.Type == "job")
@@ -38,8 +38,8 @@
     public bool IsMainHeader { get; set; } = false;
 
     string titleStyles => IsMainHeader ?
-        "font-semibold sm:text-lg text-teal-800 text-opacity-100"
-      : "font-medium text-teal-900 text-opacity-100";
+        "font-semibold sm:text-lg xl:text-xl text-teal-800 text-opacity-100"
+      : "font-medium lg:text-lg text-teal-900 text-opacity-100";
 
     protected override async Task OnParametersSetAsync()
     {
