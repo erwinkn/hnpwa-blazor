@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Hnpwa.Shared;
+using HnpwaBlazor.Models;
 
-namespace Hnpwa.Client.Services
+namespace HnpwaBlazor.Services
 {
     // API service, since we use both the official and unofficial API
     // Official: https://github.com/HackerNews/API
@@ -52,14 +52,6 @@ namespace Hnpwa.Client.Services
                 options.Add(opt);
             }
             return options;
-        }
-
-        public async Task<User> GetUser(int id)
-        {
-            var user = await OfficialHttpClient.GetFromJsonAsync<User>("user/" + id + ".json");
-            if(user == null)
-                throw new NullReferenceException("Could not read user from API response");
-            return user;
         }
     }
 }

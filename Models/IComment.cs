@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Hnpwa.Shared
+namespace HnpwaBlazor.Models
 {
     // Comment object with nested comments
     // API used: https://github.com/cheeaun/node-hnapi

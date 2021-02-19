@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Hnpwa.Shared
+namespace HnpwaBlazor.Models
 {
     // Represents stories, polls, comments, asks, jobs
     // API used: https://github.com/cheeaun/node-hnapi

@@ -1,4 +1,4 @@
-namespace Hnpwa.Shared
+namespace HnpwaBlazor.Models
 {
     // For clear separation between poll options and posts
     // Poll options have an id equal to the poll's id + their position in the poll

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Hnpwa.Shared
+namespace HnpwaBlazor.Models
 {
     // Full post with content and nested comments
     // API used: https://github.com/cheeaun/node-hnapi

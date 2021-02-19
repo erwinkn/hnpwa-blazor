@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <!-- Service worker for PWA capabilities -->
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <!-- Performance optimizations -->
+    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
   <Target Name="BuildCssDev" Condition="'$(Configuration)' == 'Debug'" BeforeTargets="Build">
@@ -19,7 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Hnpwa.Shared.csproj" />
+    <ServiceWorker Include="wwwroot\service-worker.js" 
+                   PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
 </Project>
