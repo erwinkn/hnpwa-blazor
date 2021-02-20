@@ -7,9 +7,8 @@ using HnpwaBlazor.Models;
 
 namespace HnpwaBlazor.Services
 {
-    // API service, since we use both the official and unofficial API
-    // Official: https://github.com/HackerNews/API
-    // Unofficial: https://github.com/cheeaun/node-hnapi
+    // API service for the unofficial API, since the official one is basically unusable
+    // https://github.com/cheeaun/node-hnapi
     public class ApiService
     {
         private HttpClient HttpClient { get; }
@@ -49,5 +48,8 @@ namespace HnpwaBlazor.Services
             }
             return options;
         }
+
+        // We don't handle users since support was dropped from the unofficial API
+        // and using the official one would require dozens or hundreds of calls per user page
     }
 }
