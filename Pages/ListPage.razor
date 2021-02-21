@@ -2,6 +2,7 @@
 @page "/{Category}"
 @page "/{Category}/{Page:int}"
 
+<PageTitle Value=@GetPageTitle() />
 
 @if(Stories == null)
 {

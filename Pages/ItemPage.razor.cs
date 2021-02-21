@@ -19,6 +19,7 @@ namespace HnpwaBlazor.Pages
         Item? Item { get; set; }
         IEnumerable<IPollOption> PollOptions { get; set; } = new List<IPollOption>();
         int maxPollScore;
+        string titleBase = "Blazor HN";
 
         protected override async Task OnParametersSetAsync()
         {

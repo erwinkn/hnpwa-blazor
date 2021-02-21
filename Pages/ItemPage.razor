@@ -1,7 +1,9 @@
 @page "/item/{Id:int}"
 
+
 @if(Item == null)
-{
+{ 
+    
     <!-- This div centers the elements -->
     <div class="flex h-full justify-center items-center">
         <!-- This div is a container for the animation -->
@@ -14,6 +16,7 @@
 }
 else
 {
+    <PageTitle Value=@(Item.Title + " | " + titleBase) />
     <div class="bg-white general-padding py-4 main-width rounded-b shadow mb-3 sm:mb-4 md:mb-6">
         <StoryHeader Story="@Item" IsMainHeader="true"/>
         @if(!String.IsNullOrWhiteSpace(Item.Content))

@@ -22,6 +22,27 @@ namespace HnpwaBlazor.Pages
         int maxPage = 10;
         IEnumerable<IStory>? Stories { get; set; }
 
+        string titleBase = "Blazor HN";
+
+        public string GetPageTitle()
+        {
+            switch(Category)
+            {
+                case "news":
+                    return "Top stories | " + titleBase;
+                case "newest":
+                    return "New stories | " + titleBase;
+                case "ask":
+                    return "Ask | " + titleBase;
+                case "jobs":
+                    return "Jobs | " + titleBase;
+                case "show":
+                    return "Show | " + titleBase;
+                default:
+                    return titleBase;
+            }
+        }
+
         protected override async Task OnParametersSetAsync()
         {
             // Get news by default or redirect to it for incorrect categories
