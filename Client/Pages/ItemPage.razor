@@ -3,7 +3,6 @@
 
 @if(Item == null)
 { 
-    
     <!-- This div centers the elements -->
     <div class="flex h-full justify-center items-center">
         <!-- This div is a container for the animation -->
@@ -15,6 +14,7 @@
     </div>
 }
 else
+@if(Item != null)
 {
     <PageTitle Value=@(Item.Title + " | " + titleBase) />
     <div class="bg-white general-padding py-4 main-width rounded-b shadow mb-3 sm:mb-4 md:mb-6">

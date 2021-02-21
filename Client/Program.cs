@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using HnpwaBlazor.Client.Services;
+using HnpwaBlazor.Shared.Services;
 
 namespace HnpwaBlazor.Client
 {
@@ -17,10 +17,11 @@ namespace HnpwaBlazor.Client
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("#app");
+            // builder.RootComponents.Add<App>("#app");
 
             // Our requests will go through the API service
             builder.Services.AddScoped<ApiService>();
+            builder.Services.AddScoped<IPrerenderCache, PrerenderCache>();
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             await builder.Build().RunAsync();

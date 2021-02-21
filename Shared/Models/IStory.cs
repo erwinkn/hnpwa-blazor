@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace HnpwaBlazor.Client.Models
+namespace HnpwaBlazor.Shared.Models
 {
     // Represents stories, polls, ask, jobs in list form
     // API used: https://github.com/cheeaun/node-hnapi

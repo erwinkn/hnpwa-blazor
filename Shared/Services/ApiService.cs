@@ -3,26 +3,34 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using HnpwaBlazor.Client.Models;
+using HnpwaBlazor.Shared.Models;
 
-namespace HnpwaBlazor.Client.Services
+namespace HnpwaBlazor.Shared.Services
 {
     // API service for the unofficial API, since the official one is basically unusable
     // https://github.com/cheeaun/node-hnapi
     public class ApiService
     {
         private HttpClient HttpClient { get; }
+        private IPrerenderCache Cache { get; }
 
-        public ApiService()
+        public ApiService(IPrerenderCache cache)
         {
             HttpClient = new HttpClient { BaseAddress = new Uri("https://api.hackerwebapp.com/") };
+            Cache = cache;
         }
 
         public async Task<List<Item>> GetList(string category, int pageNb=1)
         {
             if(pageNb > 10)
                 throw new ArgumentOutOfRangeException("Can only go up to page 10");
-            var items = await HttpClient.GetFromJsonAsync<List<Item>>(category + "?page=" + pageNb);
+
+            List<Item> items;
+            if(Cache.LoadingFinished)
+                items = await HttpClient.GetFromJsonAsync<List<Item>>(category + "?page=" + pageNb);
+            else
+                items = await Cache.GetOrAdd(category + pageNb, () => HttpClient.GetFromJsonAsync<List<Item>>(category + "?page=" + pageNb));
+            
             if(items == null)
                 throw new NullReferenceException("Could not read stories from API response");
             return items;
@@ -30,12 +38,17 @@ namespace HnpwaBlazor.Client.Services
 
         public async Task<Item> GetItem(int id)
         {
-            var item = await HttpClient.GetFromJsonAsync<Item>("item/" + id);
+            Item item;
+            if(Cache.LoadingFinished)
+                item = await HttpClient.GetFromJsonAsync<Item>("item/" + id);
+            else
+                item = await Cache.GetOrAdd("item" + id, () => HttpClient.GetFromJsonAsync<Item>("item/" + id));
             if(item == null)
                 throw new NullReferenceException("Could not read item from API response");
             return item;
         }
 
+        // TODO: add support for serializing poll options
         public async Task<List<IPollOption>> GetPollOptions(int pollId, int nbOptions)
         {
             List<IPollOption> options = new List<IPollOption>();

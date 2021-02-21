@@ -3,8 +3,8 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Linq;
 using System.Threading.Tasks;
-using HnpwaBlazor.Client.Services;
-using HnpwaBlazor.Client.Models;
+using HnpwaBlazor.Shared.Services;
+using HnpwaBlazor.Shared.Models;
 using Microsoft.AspNetCore.Components;
 
 namespace HnpwaBlazor.Client.Pages
@@ -13,6 +13,8 @@ namespace HnpwaBlazor.Client.Pages
     {
         [Inject]
         public ApiService ApiService { get; set; }
+        [Inject]
+        public IPrerenderCache Cache { get; set; }
         [Parameter]
         public int Id { get; set; }
 

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HnpwaBlazor.Client.Services;
-using HnpwaBlazor.Client.Models;
+using HnpwaBlazor.Shared.Services;
+using HnpwaBlazor.Shared.Models;
 using Microsoft.AspNetCore.Components;
 
 namespace HnpwaBlazor.Client.Pages
@@ -10,9 +10,11 @@ namespace HnpwaBlazor.Client.Pages
     public partial class ListPage
     {
         [Inject]
-        ApiService ApiService { get; set; }
+        public ApiService ApiService { get; set; }
         [Inject]
-        NavigationManager NavigationManager { get; set; }
+        public NavigationManager NavigationManager { get; set; }
+        [Inject]
+        public IPrerenderCache Cache { get; set; }
 
         [Parameter]
         public string? Category { get; set; }
@@ -20,7 +22,7 @@ namespace HnpwaBlazor.Client.Pages
         public int? Page { get; set; }
 
         int maxPage = 10;
-        List<Item>? Stories { get; set; }
+        List<Item> Stories { get; set; } = new List<Item>();
 
         string titleBase = "Blazor HN";
 

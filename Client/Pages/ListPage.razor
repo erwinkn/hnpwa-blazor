@@ -16,19 +16,20 @@
         </div>
     </div>
 }
-else
+else 
+@if(Stories != null)
 {
     <!-- First navigation control -->
     <!-- Eventual redirections have already happened so we're good -->
     <div class="rounded-b">
-        <PageControls Page="@(Page ?? 1)" MaxPage=@maxPage Category=@Category />
+        <PageControls Page="@(Page ?? 1)" MaxPage=@maxPage Category=@Category/>
     </div>
     <!-- Stories list -->
     <div class="bg-white main-width rounded shadow my-3 sm:my-4 ">
         @foreach(IStory story in Stories)
         {
             <!-- Padding here due to borders -->
-            <div class="general-padding py-4 border-t-2 border-gray-100">
+            <div class="general-padding py-4 border-t-2 border-gray-100" @key=story.Id>
                 <StoryHeader Story="@story" />
             </div>
         }

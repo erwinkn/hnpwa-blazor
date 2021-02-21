@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\HnpwaBlazor.Client.csproj" />
+    <ProjectReference Include="..\Shared\HnpwaBlazor.Shared.csproj" />
   </ItemGroup>
 
 
