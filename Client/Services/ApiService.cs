@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using HnpwaBlazor.Models;
+using HnpwaBlazor.Client.Models;
 
-namespace HnpwaBlazor.Services
+namespace HnpwaBlazor.Client.Services
 {
     // API service for the unofficial API, since the official one is basically unusable
     // https://github.com/cheeaun/node-hnapi

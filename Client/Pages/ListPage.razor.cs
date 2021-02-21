@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HnpwaBlazor.Services;
-using HnpwaBlazor.Models;
+using HnpwaBlazor.Client.Services;
+using HnpwaBlazor.Client.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace HnpwaBlazor.Pages
+namespace HnpwaBlazor.Client.Pages
 {
     public partial class ListPage
     {

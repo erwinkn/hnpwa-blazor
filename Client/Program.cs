@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using HnpwaBlazor.Services;
+using HnpwaBlazor.Client.Services;
 
-namespace HnpwaBlazor
+namespace HnpwaBlazor.Client
 {
     public class Program
     {

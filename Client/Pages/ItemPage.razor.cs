@@ -3,11 +3,11 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Linq;
 using System.Threading.Tasks;
-using HnpwaBlazor.Services;
-using HnpwaBlazor.Models;
+using HnpwaBlazor.Client.Services;
+using HnpwaBlazor.Client.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace HnpwaBlazor.Pages
+namespace HnpwaBlazor.Client.Pages
 {
     public partial class ItemPage
     {

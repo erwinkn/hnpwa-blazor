@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using HnpwaBlazor.Models;
+using HnpwaBlazor.Client.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
-namespace HnpwaBlazor.Components
+namespace HnpwaBlazor.Client.Components
 {
     public partial class Comment
     {

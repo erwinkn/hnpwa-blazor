@@ -1,4 +1,4 @@
-namespace HnpwaBlazor.Models
+namespace HnpwaBlazor.Client.Models
 {
     // Wrapper used for deserializing
     public struct PollOptionScore

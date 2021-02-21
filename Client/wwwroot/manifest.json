@@ -1,6 +1,6 @@
 {
-    "name": "HnpwaBlazor",
-    "short_name": "HnpwaBlazor",
+    "name": "HnpwaBlazor.Client",
+    "short_name": "HnpwaBlazor.Client",
     "start_url": "./",
     "display": "standalone",
     "background_color": "#F3F4F6",
