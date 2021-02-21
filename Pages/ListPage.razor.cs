@@ -20,7 +20,7 @@ namespace HnpwaBlazor.Pages
         public int? Page { get; set; }
 
         int maxPage = 10;
-        IEnumerable<IStory>? Stories { get; set; }
+        List<Item>? Stories { get; set; }
 
         string titleBase = "Blazor HN";
 

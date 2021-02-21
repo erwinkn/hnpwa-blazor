@@ -18,7 +18,7 @@ namespace HnpwaBlazor.Services
             HttpClient = new HttpClient { BaseAddress = new Uri("https://api.hackerwebapp.com/") };
         }
 
-        public async Task<IEnumerable<Item>> GetList(string category, int pageNb=1)
+        public async Task<List<Item>> GetList(string category, int pageNb=1)
         {
             if(pageNb > 10)
                 throw new ArgumentOutOfRangeException("Can only go up to page 10");
@@ -36,7 +36,7 @@ namespace HnpwaBlazor.Services
             return item;
         }
 
-        public async Task<IEnumerable<IPollOption>> GetPollOptions(int pollId, int nbOptions)
+        public async Task<List<IPollOption>> GetPollOptions(int pollId, int nbOptions)
         {
             List<IPollOption> options = new List<IPollOption>();
             for(int i = 1; i < nbOptions; i++)
