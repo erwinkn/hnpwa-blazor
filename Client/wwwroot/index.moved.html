@@ -66,9 +66,9 @@
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
 
-    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <!-- Load Brotli compressed files -->
     <script src="js/decode.min.js"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
         Blazor.start({
           loadBootResource: function (type, name, defaultUri, integrity) {
@@ -84,7 +84,7 @@
                 const contentType = type === 
                   'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
                 return new Response(decompressedResponseArray, 
-                  { headers: { 'content-type': contentType } });
+                  { headers: { 'content-type': contentType, 'blazor-environment': 'Standalone' } });
               })();
             }
           }

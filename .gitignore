@@ -1,8 +1,15 @@
 .vscode
+**/mono_crash*
 
-bin
-obj
-node_modules
-wwwroot/css/app.min.css
+Client/bin
+Client/obj
+Client/node_modules
+Client/wwwroot/css/app.min.css
+
+Server/bin
+Server/obj
+
+Shared/bin
+Shared/obj
 
 Notes.md

@@ -20,9 +20,6 @@ jobs:
       - name: Setup Client project for standalone Deployment
         run: ./build/gh-pages-setup.sh
 
-      - name: Check that Program.cs was modified correctly
-        run: cat Client/Program.cs
-
       # Build and publish Blazor WebAssembly
       - name: Publish app
         run: dotnet publish Client -c Release
