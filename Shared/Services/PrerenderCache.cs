@@ -25,11 +25,7 @@ namespace HnpwaBlazor.Shared.Services
 		}
 
 		public Dictionary<string, object> Items { get; set; } = new Dictionary<string, object>();
-
 		public bool LoadingFinished { get; set; }
-
-		// [Inject]
-		// public IJSRuntime JS { get; set; }
 
 		public bool IsRunningOnServer => _js.GetType().Name == "UnsupportedJavaScriptRuntime";
 
@@ -46,8 +42,6 @@ namespace HnpwaBlazor.Shared.Services
 				await LoadAsync();
 				if (Items.Remove(key, out var item))
 				{
-					// Console.WriteLine("From cache");
-
 					var json = JsonSerializer.Serialize(item);
 
 					return JsonSerializer.Deserialize<TResult>(json);
@@ -63,7 +57,6 @@ namespace HnpwaBlazor.Shared.Services
 			{
 				Items = await _js.InvokeAsync<Dictionary<string, object>>("prerenderCache.load");
 				LoadingFinished = true;
-				// Console.WriteLine($"Loaded cache ({Items.Count} items).");
 			}
 		}
 		public string Serialize() => JsonSerializer.Serialize(Items);
