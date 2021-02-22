@@ -17,22 +17,15 @@ jobs:
       # Check out repository under $GITHUB_WORKSPACE, so the job can access it
       - uses: actions/checkout@v2
 
-      # Extract repository name
-      # github.repository is in format "/erwinkn/hnpwa-blazor" and we want to extract "hnpwa-blazor"
-      - name: Extract repository name
-        run: echo "REPO_NAME=$(echo ${{ github.repository }} | awk -F'/' '{print $2}')" >> $GITHUB_ENV
+      - name: Setup Client project for standalone Deployment
+        run: ./build/gh-pages-setup.sh
 
-      # Rewrite base url with name of the repository
-      - name: Change base URL in wwwroot/index.html
-        run: sed -i -e "s/<base href=\".*\"/<base href=\"\/$REPO_NAME\/\"/" wwwroot/index.html 
-
-      # Install Node packages
-      - name: Install Node packages
-        run: npm install
+      - name: Check that Program.cs was modified correctly
+        run: cat Client/Program.cs
 
       # Build and publish Blazor WebAssembly
       - name: Publish app
-        run: dotnet publish -c Release
+        run: dotnet publish Client -c Release
         
       # GitHub Action to deploy static files to GitHub Pages
       - name: GitHub Pages action
