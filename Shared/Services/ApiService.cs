@@ -12,9 +12,9 @@ namespace HnpwaBlazor.Shared.Services
     public class ApiService : IApiService
     {
         private HttpClient HttpClient { get; }
-        private IPrerenderCache Cache { get; }
+        private ICache Cache { get; }
 
-        public ApiService(IPrerenderCache cache)
+        public ApiService(ICache cache)
         {
             HttpClient = new HttpClient { BaseAddress = new Uri("https://api.hackerwebapp.com/") };
             Cache = cache;

@@ -24,7 +24,7 @@ namespace HnpwaBlazor.Client
 
             // Our requests will go through the API service
             // STANDALONE: builder.Services.AddScoped<IApiService, StandaloneApiService>();
-            /* HOSTED */ builder.Services.AddScoped<IPrerenderCache, PrerenderCache>();
+            /* HOSTED */ builder.Services.AddScoped<ICache, Cache>();
             /* HOSTED */ builder.Services.AddScoped<IApiService, ApiService>();
 
             await builder.Build().RunAsync();

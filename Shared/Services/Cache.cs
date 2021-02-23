@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 namespace HnpwaBlazor.Shared.Services
 {
 	// https://github.com/flyingpie/blazor-prerender-cache
-	public interface IPrerenderCache
+	public interface ICache
 	{
 		Task<TResult> GetOrAdd<TResult>(string key, Func<Task<TResult>> factory);
 		bool LoadingFinished { get; set; }
 		string Serialize();
 	}
 
-	public class PrerenderCache : IPrerenderCache
+	public class Cache : ICache
 	{
 		private readonly IJSRuntime _js;
 
-		public PrerenderCache(IJSRuntime js)
+		public Cache(IJSRuntime js)
 		{
 			_js = js ?? throw new ArgumentNullException(nameof(js));
 		}
@@ -55,7 +55,7 @@ namespace HnpwaBlazor.Shared.Services
 		{
 			if (!LoadingFinished)
 			{
-				Items = await _js.InvokeAsync<Dictionary<string, object>>("prerenderCache.load");
+				Items = await _js.InvokeAsync<Dictionary<string, object>>("Cache.load");
 				LoadingFinished = true;
 			}
 		}

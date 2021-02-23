@@ -14,7 +14,7 @@ namespace HnpwaBlazor.Client.Pages
         [Inject]
         public IApiService ApiService { get; set; }
         [Inject]
-        public IPrerenderCache Cache { get; set; }
+        public ICache Cache { get; set; }
         [Parameter]
         public int Id { get; set; }
 

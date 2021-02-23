@@ -1,8 +1,9 @@
-@inject IPrerenderCache cache
+@using HnpwaBlazor.Shared.Services
+@inject ICache cache
 
 <script suppress-error="BL9992" type="text/javascript">
-	window.prerenderCache = {
+	window.Cache = {
 		cache: @(new MarkupString(cache.Serialize())),
-		load: () => window.prerenderCache.cache
+		load: () => window.Cache.cache
 	};
 </script>

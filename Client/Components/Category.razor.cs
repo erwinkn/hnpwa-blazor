@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using HnpwaBlazor.Shared.Services;
 using HnpwaBlazor.Shared.Models;
@@ -27,9 +26,9 @@ namespace HnpwaBlazor.Client.Components
         {
             switch(Name)
             {
-                case "news":
+                case "top":
                     return "Top stories | " + titleBase;
-                case "newest":
+                case "new":
                     return "New stories | " + titleBase;
                 case "ask":
                     return "Ask | " + titleBase;
