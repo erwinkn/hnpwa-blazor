@@ -7,7 +7,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: hn-blazor
-  AZURE_WEBAPP_PACKAGE_PATH: 'Server'
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
   DOTNET_VERSION: '5.0.x'
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
@@ -39,7 +39,7 @@ jobs:
 
       # Build and publish server app
       - name: dotnet build and publish
-        run: dotnet publish Server -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+        run: dotnet publish Server -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/azure-app'
 
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
@@ -47,4 +47,4 @@ jobs:
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-          package: './myapp'
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/azure-app'

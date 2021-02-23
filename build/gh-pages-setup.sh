@@ -11,4 +11,4 @@ sed -i -e "s/\/\/\sSTANDALONE:\s//" Program.cs
 # Comment hosted setup
 sed -i -e "s/\/\*\sHOSTED\s\*\//\/\//" Program.cs
 # Install Node packages
-# npm install
+npm install

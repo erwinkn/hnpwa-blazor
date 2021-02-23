@@ -11,8 +11,6 @@ namespace HnpwaBlazor.Client.Components
     {
         [Inject]
         public IApiService ApiService { get; set; }
-        [Inject]
-        public IPrerenderCache Cache { get; set; }
 
         [Parameter]
         public string Name { get; set; }
