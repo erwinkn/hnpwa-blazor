@@ -26,9 +26,9 @@ namespace HnpwaBlazor.Client.Components
         {
             switch(Name)
             {
-                case "top":
+                case "news":
                     return "Top stories | " + titleBase;
-                case "new":
+                case "newest":
                     return "New stories | " + titleBase;
                 case "ask":
                     return "Ask | " + titleBase;

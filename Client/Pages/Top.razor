@@ -1,8 +1,8 @@
 @page "/"
-@page "/top"
-@page "/top/{Id:int}"
+@page "/news"
+@page "/news/{Id:int}"
 
-<Category Name="top" Page=@(Id ?? 1) MaxPage=10 />
+<Category Name="news" Page=@(Id ?? 1) MaxPage=10 />
 
 @code {
     [Parameter]
