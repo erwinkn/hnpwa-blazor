@@ -11,31 +11,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HN Blazor</title>
+    <title>Blazor HN</title>
+    <meta name="description" content="A simple Hacker News reader built with the Blazor framework" />
+    <meta name="keywords" content="HackerNews, Blazor, HNPWA, .NET" />
+    <meta name="author" content="Erwin Kuhn" />
+
     <base href="~/" />
+
+     <link rel="preconnect" href="https://api.hackerwebapp.com/">
+
     <link href="css/app.min.css" rel="stylesheet" />
+    <link href="manifest.json" rel="manifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body>
     <component type="typeof(App)" render-mode="WebAssemblyPrerendered" />
-
-    @* <div id="blazor-error-ui">
-        <environment include="Staging,Production">
-            An error has occurred. This application may no longer respond until reloaded.
-        </environment>
-        <environment include="Development">
-            An unhandled exception has occurred. See browser dev tools for details.
-        </environment>
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div> *@
 
     <!-- For the PageTitle component -->
     <script>
         function BlazorSetTitle(title) {
             document.title = title;
-        }
-        function BlazorElementExists(id) {
-            return !!document.getElementById(id);
         }
     </script>
 

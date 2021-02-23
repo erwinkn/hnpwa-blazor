@@ -84,7 +84,7 @@
                 const contentType = type === 
                   'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
                 return new Response(decompressedResponseArray, 
-                  { headers: { 'content-type': contentType, 'blazor-environment': 'Standalone' } });
+                  { headers: { 'content-type': contentType } });
               })();
             }
           }
