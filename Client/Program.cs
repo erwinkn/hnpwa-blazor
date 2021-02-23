@@ -18,23 +18,14 @@ namespace HnpwaBlazor.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             string environment = builder.HostEnvironment.Environment;
-            if(environment == "Standalone")
-            {
-                builder.RootComponents.Add<App>("#app");
-            }
+            // STANDALONE: builder.RootComponents.Add<App>("#app");
+
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             // Our requests will go through the API service
-            if(environment == "Standalone")
-            {
-                builder.Services.AddScoped<StandaloneApiService>();
-            }
-            else
-            {
-                builder.Services.AddScoped<IPrerenderCache, PrerenderCache>();
-                builder.Services.AddScoped<ApiService>();
-            }
-            
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            // STANDALONE: builder.Services.AddScoped<IApiService, StandaloneApiService>();
+            /* HOSTED */ builder.Services.AddScoped<IPrerenderCache, PrerenderCache>();
+            /* HOSTED */ builder.Services.AddScoped<IApiService, ApiService>();
 
             await builder.Build().RunAsync();
         }

@@ -1,0 +1,9 @@
+@page "/new"
+@page "/new/{Id:int}"
+
+<Category Name="newest" Page=@(Id ?? 1) MaxPage=10 />
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+}

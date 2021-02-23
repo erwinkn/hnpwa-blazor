@@ -4,19 +4,31 @@ name: GitHubPagesDeploy
 # Define a environment variable to indicate the publish location from the Blazor WebAssembly app
 env:
   PUBLISH_DIR: Client/bin/Release/net5.0/publish/wwwroot
+  DOTNET_VERSION: '5.0.x'
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  build-deploy-gh-pages:
     runs-on: ubuntu-latest
 
     steps:
       # Check out repository under $GITHUB_WORKSPACE, so the job can access it
       - uses: actions/checkout@v2
 
+      # Setup .NET Core SDK
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      # Setup Node
+      - name: Setup Node
+        uses: actions/setup-node@v2
+
+      # Client setup requires some alterations
       - name: Setup Client project for standalone Deployment
         run: ./build/gh-pages-setup.sh
 

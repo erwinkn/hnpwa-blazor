@@ -12,7 +12,7 @@ namespace HnpwaBlazor.Client.Pages
     public partial class ItemPage
     {
         [Inject]
-        public ApiService ApiService { get; set; }
+        public IApiService ApiService { get; set; }
         [Inject]
         public IPrerenderCache Cache { get; set; }
         [Parameter]

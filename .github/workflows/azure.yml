@@ -3,7 +3,7 @@ name: AzureDeploy
 
 on:
   push:
-    branches: [ azure ]
+    branches: [ main ]
 
 env:
   AZURE_WEBAPP_NAME: hn-blazor
@@ -12,7 +12,7 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
-  build:
+  build-deploy-azure:
     runs-on: ubuntu-latest
     environment: azure
 

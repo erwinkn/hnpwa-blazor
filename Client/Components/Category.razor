@@ -1,7 +1,3 @@
-@page "/"
-@page "/{Category}"
-@page "/{Category}/{Page:int}"
-
 <PageTitle Value=@GetPageTitle() />
 
 @if(Stories == null)
@@ -22,7 +18,7 @@ else
     <!-- First navigation control -->
     <!-- Eventual redirections have already happened so we're good -->
     <div class="rounded-b">
-        <PageControls Page="@(Page ?? 1)" MaxPage=@maxPage Category=@Category/>
+        <PageControls Page=@Page MaxPage=@MaxPage Category=@Name/>
     </div>
     <!-- Stories list -->
     <div class="bg-white main-width rounded shadow my-3 sm:my-4 ">
@@ -36,6 +32,6 @@ else
     </div>
     <!-- Second navigation control -->
     <div class="rounded-t">
-        <PageControls Page="@(Page ?? 1)" MaxPage=@maxPage Category=@Category />
+        <PageControls Page=@Page MaxPage=@MaxPage Category=@Name />
     </div>
 }

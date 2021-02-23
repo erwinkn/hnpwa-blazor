@@ -9,7 +9,7 @@ namespace HnpwaBlazor.Shared.Services
 {
     // API service for the unofficial API, since the official one is basically unusable
     // https://github.com/cheeaun/node-hnapi
-    public class ApiService
+    public class ApiService : IApiService
     {
         private HttpClient HttpClient { get; }
         private IPrerenderCache Cache { get; }

@@ -1,0 +1,9 @@
+@page "/ask"
+@page "/ask/{Id:int}"
+
+<Category Name="ask" Page=@(Id ?? 1) MaxPage=3 />
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+}

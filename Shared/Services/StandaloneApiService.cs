@@ -7,7 +7,7 @@ using HnpwaBlazor.Shared.Models;
 
 namespace HnpwaBlazor.Shared.Services
 {
-    public class StandaloneApiService
+    public class StandaloneApiService : IApiService
     {
         private HttpClient HttpClient { get; }
 
