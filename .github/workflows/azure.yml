@@ -1,0 +1,50 @@
+# Deployment of the Blazor WASM Hosted app to Azure App Services
+name: AzureDeploy
+
+on:
+  push:
+    branches: [ azure ]
+
+env:
+  AZURE_WEBAPP_NAME: hn-blazor
+  AZURE_WEBAPP_PACKAGE_PATH: 'Server'
+  DOTNET_VERSION: '5.0.x'
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: azure
+
+    steps:
+      # Checkout the repo
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@master
+
+      # Setup .NET Core SDK
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      # Setup Node
+      - name: Setup Node
+        uses: actions/setup-node@v2
+
+      # Install npm packages for build
+      - name: Install npm packages for build
+        run: |
+          cd Client
+          npm install
+
+      # Build and publish server app
+      - name: dotnet build and publish
+        run: dotnet publish Server -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+
+      # Deploy to Azure Web apps
+      - name: 'Run Azure webapp deploy action using publish profile credentials'
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
+          package: './myapp'
