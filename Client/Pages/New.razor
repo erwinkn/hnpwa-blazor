@@ -1,6 +1,7 @@
 @page "/newest"
 @page "/newest/{Id:int}"
 
+<PageTitle Value="New stories | Blazor HN" />
 <Category Name="newest" Page=@(Id ?? 1) MaxPage=10 />
 
 @code {

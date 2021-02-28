@@ -2,6 +2,8 @@
 @page "/news"
 @page "/news/{Id:int}"
 
+
+<PageTitle Value="Top stories | Blazor HN" />
 <Category Name="news" Page=@(Id ?? 1) MaxPage=10 />
 
 @code {

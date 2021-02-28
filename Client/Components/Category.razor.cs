@@ -20,27 +20,6 @@ namespace HnpwaBlazor.Client.Components
 
         List<Item> Stories { get; set; }
 
-        string titleBase = "Blazor HN";
-
-        public string GetPageTitle()
-        {
-            switch(Name)
-            {
-                case "news":
-                    return "Top stories | " + titleBase;
-                case "newest":
-                    return "New stories | " + titleBase;
-                case "ask":
-                    return "Ask | " + titleBase;
-                case "jobs":
-                    return "Jobs | " + titleBase;
-                case "show":
-                    return "Show | " + titleBase;
-                default:
-                    return titleBase;
-            }
-        }
-
         protected override async Task OnParametersSetAsync()
         {
             Stories = await ApiService.GetList(Name, (int)Page);
