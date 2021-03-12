@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .comment a {
+        @apply underline;
+    }
+    .comment p {
+        @apply mt-1.5;
+    }
+    /* Loading animation */
+      .loading-bars div {
+        display: inline-block;
+        animation: loading-bars 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+      }
+      .loading-bars div:nth-child(1) {
+        /* left: 8px; */
+        animation-delay: -0.24s;
+      }
+      .loading-bars div:nth-child(2) {
+        /* left: 32px; */
+        animation-delay: -0.12s;
+      }
+      .loading-bars div:nth-child(3) {
+        animation-delay: 0;
+      }
+      @keyframes loading-bars {
+        0%, 100% {
+          height: 100%;
+        }
+        70% {
+          height: 40%;
+        }
+      }
+}
+
+@layer utilities {
+    .general-padding {
+        @apply px-4 sm:px-8 md:px-12;
+    }
+    .main-width {
+        @apply mx-auto w-full md:w-10/12 lg:w-8/12 xl:w-7/12;
+    }
+    .metadata {
+        @apply text-gray-600 text-opacity-90;
+    }
+    /* Feather icons */
+    .feather {
+        width: 24px;
+        height: 24px;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+    }
+}
