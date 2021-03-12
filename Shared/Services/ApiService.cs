@@ -12,9 +12,9 @@ namespace HnpwaBlazor.Shared.Services
     public class ApiService : IApiService
     {
         private HttpClient HttpClient { get; }
-        private ICache Cache { get; }
+        private Cache Cache { get; }
 
-        public ApiService(ICache cache)
+        public ApiService(Cache cache)
         {
             HttpClient = new HttpClient { BaseAddress = new Uri("https://api.hackerwebapp.com/") };
             Cache = cache;
@@ -26,7 +26,7 @@ namespace HnpwaBlazor.Shared.Services
                 throw new ArgumentOutOfRangeException("Can only go up to page 10");
 
             List<Item> items;
-            if(Cache.LoadingFinished)
+            if(Cache.HasLoaded)
                 items = await HttpClient.GetFromJsonAsync<List<Item>>(category + "?page=" + pageNb);
             else
                 items = await Cache.GetOrAdd(category + pageNb, () => HttpClient.GetFromJsonAsync<List<Item>>(category + "?page=" + pageNb));
@@ -39,7 +39,7 @@ namespace HnpwaBlazor.Shared.Services
         public async Task<Item> GetItem(int id)
         {
             Item item;
-            if(Cache.LoadingFinished)
+            if(Cache.HasLoaded)
                 item = await HttpClient.GetFromJsonAsync<Item>("item/" + id);
             else
                 item = await Cache.GetOrAdd("item" + id, () => HttpClient.GetFromJsonAsync<Item>("item/" + id));

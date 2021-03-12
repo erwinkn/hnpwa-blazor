@@ -7,11 +7,11 @@ using HnpwaBlazor.Shared.Models;
 
 namespace HnpwaBlazor.Shared.Services
 {
-    public class StandaloneApiService : IApiService
+    public class NoCacheApiService : IApiService
     {
         private HttpClient HttpClient { get; }
 
-        public StandaloneApiService()
+        public NoCacheApiService()
         {
             HttpClient = new HttpClient { BaseAddress = new Uri("https://api.hackerwebapp.com/") };
         }

@@ -1,9 +1,9 @@
 @using HnpwaBlazor.Shared.Services
-@inject ICache cache
+@inject Cache Cache
 
 <script suppress-error="BL9992" type="text/javascript">
 	window.Cache = {
-		cache: @(new MarkupString(cache.Serialize())),
+		cache: @(new MarkupString(Cache.Write())),
 		load: () => window.Cache.cache
 	};
 </script>

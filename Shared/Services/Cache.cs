@@ -7,58 +7,43 @@ using System.Threading.Tasks;
 
 namespace HnpwaBlazor.Shared.Services
 {
-	// https://github.com/flyingpie/blazor-prerender-cache
-	public interface ICache
+	public class Cache
 	{
-		Task<TResult> GetOrAdd<TResult>(string key, Func<Task<TResult>> factory);
-		bool LoadingFinished { get; set; }
-		string Serialize();
-	}
+		public bool HasLoaded { get; set; }
 
-	public class Cache : ICache
-	{
-		private readonly IJSRuntime _js;
+		private Dictionary<string, object> Items { get; set; } = new Dictionary<string, object>();
+		private readonly IJSRuntime jsRuntime;
+		private bool IsRunningOnServer => jsRuntime.GetType().Name == "UnsupportedJavaScriptRuntime";
 
 		public Cache(IJSRuntime js)
 		{
-			_js = js ?? throw new ArgumentNullException(nameof(js));
+			jsRuntime = js ?? throw new ArgumentNullException(nameof(js));
 		}
 
-		public Dictionary<string, object> Items { get; set; } = new Dictionary<string, object>();
-		public bool LoadingFinished { get; set; }
-
-		public bool IsRunningOnServer => _js.GetType().Name == "UnsupportedJavaScriptRuntime";
-
-		public async Task<TResult> GetOrAdd<TResult>(string key, Func<Task<TResult>> factory)
+		public async Task<TResult> GetOrAdd<TResult>(string key, Func<Task<TResult>> call)
 		{
 			if (IsRunningOnServer)
 			{
-				var res = await factory();
+				var res = await call();
 				Items[key] = res;
 				return res;
 			}
 			else
 			{
-				await LoadAsync();
+				if(!HasLoaded)
+				{
+					Items = await jsRuntime.InvokeAsync<Dictionary<string, object>>("Cache.load");
+					HasLoaded = true;
+				}
 				if (Items.Remove(key, out var item))
 				{
 					var json = JsonSerializer.Serialize(item);
-
 					return JsonSerializer.Deserialize<TResult>(json);
 				}
-				// Console.WriteLine("From factory");
-				return await factory();
+				return await call();
 			}
 		}
 
-		public async Task LoadAsync()
-		{
-			if (!LoadingFinished)
-			{
-				Items = await _js.InvokeAsync<Dictionary<string, object>>("Cache.load");
-				LoadingFinished = true;
-			}
-		}
-		public string Serialize() => JsonSerializer.Serialize(Items);
+		public string Write() => JsonSerializer.Serialize(Items);
 	}
 }

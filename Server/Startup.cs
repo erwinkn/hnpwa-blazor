@@ -24,7 +24,7 @@ namespace HnpwaBlazor.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IApiService, ApiService>();
-            services.AddScoped<ICache, Cache>();
+            services.AddScoped<Cache>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
